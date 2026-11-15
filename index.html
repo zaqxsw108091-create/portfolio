@@ -454,27 +454,13 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
 </section>
 
 <section class="blk wrap">
-  <h2 class="h2">과제와 AI와 함께 만든 보안 결과물</h2>
+  <h2 class="h2">개인 프로젝트</h2>
+  <p class="h2sub">과제가 아니라 스스로 정해서 AI와 함께 만든 것입니다.</p>
   <div class="rows">
-    <article class="card row flip">
-      <a class="pic" href="https://choi-bujang-secret-vault-tr33.vercel.app"><img src="assets/byteback.png" alt="BYTE BACK 방어전 자료실 로그인 화면" loading="lazy"></a>
-      <div class="txt">
-        <h3>BYTE BACK 방어전: 뚫린 자료실을 단계별로 막기</h3>
-        <p class="one">SKT 알레프 보안과정의 단계별 과제입니다. 자료가 그대로 공개된 "점령된 자료실"을 제공된 시작 틀에서 복사해 받아, 단계마다 방어를 하나씩 붙이고 심판 판정을 받았습니다.</p>
-        <ul class="chips"><li>JavaScript</li><li>Supabase</li><li>Vercel</li></ul>
-        <ul class="pts">
-          <li>공개돼 있던 자료를 코드 밖 DB로 옮기고, 로그인한 사람이 자기 자료만 보게 함 (남의 자료는 403)</li>
-          <li>자료 요청을 서버 한곳으로 모으고, 등록한 기기만 통과, 평소와 다른 접속은 다시 확인</li>
-          <li>보너스: 무차별 로그인, 웹 주입, 권한 가로채기, 자료 빼돌리기 탐지 과제</li>
-        </ul>
-        <p class="limit"><b>한계</b> 시작 틀과 일부 기능은 과정에서 제공된 것입니다. 자료는 모두 가상 메모입니다.</p>
-        <div class="links"><a class="go" href="https://choi-bujang-secret-vault-tr33.vercel.app">열어 보기</a><a href="https://github.com/zaqxsw108091-create/choi-bujang-secret-vault">저장소</a></div>
-      </div>
-    </article>
-
     <article class="card row">
       <a class="pic" href="assets/aegis-dashboard.png"><img src="assets/aegis-dashboard.png" alt="Aegis 관제 콘솔 화면" loading="lazy"></a>
       <div class="txt">
+        <p style="margin-bottom:8px"><span class="tag me">개인 프로젝트</span></p>
         <h3>Aegis: 방어형 웹 보안 시스템</h3>
         <p class="one">무차별 대입, 요청 폭주, SQL 인젝션, XSS로부터 웹 애플리케이션을 보호하고 탐지하고 기록합니다.</p>
         <ul class="chips"><li>Java 21</li><li>Spring Boot 3.3</li><li>Spring Security 6</li></ul>
@@ -490,8 +476,49 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
     </article>
 
     <article class="card row flip">
+      <a class="pic" href="assets/pc-dashboard.png"><img src="assets/pc-dashboard.png" alt="내 PC 관제 대시보드 화면 (예제 모드)" loading="lazy"></a>
+      <div class="txt">
+        <p style="margin-bottom:8px"><span class="tag me">개인 프로젝트</span></p>
+        <h3>내 PC 관제 대시보드</h3>
+        <p class="one">Windows PC의 CPU, 메모리, 디스크, 방화벽 상태를 읽기만 해서 정상, 주의, 확인 불가로 보여 줍니다.</p>
+        <p style="font-size:15px;color:var(--sub);margin-top:6px">처음에는 과제로 시작했지만 과제로는 쓸 수 없게 되어, 따로 고쳐서 독립 앱으로 만들었습니다.</p>
+        <ul class="chips"><li>Node.js</li><li>v0.3.1</li></ul>
+        <ul class="pts">
+          <li>처음 상태를 기준선으로 기억하고 새로 열린 포트, 새 시작프로그램, 꺼진 방화벽을 알림</li>
+          <li>설정을 바꾸지 않고, 외부 서버로 아무것도 보내지 않음</li>
+        </ul>
+        <p class="limit"><b>한계</b> 보안 제품이 아니라 상태를 보여 주는 도구입니다. 왼쪽 화면은 예제 모드의 가짜 값입니다.</p>
+        <div class="links"><a href="https://github.com/zaqxsw108091-create/pc-control-dashboard">저장소</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="blk wrap">
+  <h2 class="h2">보안과정 과제</h2>
+  <p class="h2sub">SKT 알레프 보안과정에서 받은 과제를 AI와 함께 수행한 결과입니다.</p>
+  <div class="rows">
+    <article class="card row">
+      <a class="pic" href="https://choi-bujang-secret-vault-tr33.vercel.app"><img src="assets/byteback.png" alt="BYTE BACK 방어전 자료실 로그인 화면" loading="lazy"></a>
+      <div class="txt">
+        <p style="margin-bottom:8px"><span class="tag team">보안과정 과제</span></p>
+        <h3>BYTE BACK 방어전: 뚫린 자료실을 단계별로 막기</h3>
+        <p class="one">SKT 알레프 보안과정의 단계별 과제입니다. 자료가 그대로 공개된 "점령된 자료실"을 제공된 시작 틀에서 복사해 받아, 단계마다 방어를 하나씩 붙이고 심판 판정을 받았습니다.</p>
+        <ul class="chips"><li>JavaScript</li><li>Supabase</li><li>Vercel</li></ul>
+        <ul class="pts">
+          <li>공개돼 있던 자료를 코드 밖 DB로 옮기고, 로그인한 사람이 자기 자료만 보게 함 (남의 자료는 403)</li>
+          <li>자료 요청을 서버 한곳으로 모으고, 등록한 기기만 통과, 평소와 다른 접속은 다시 확인</li>
+          <li>보너스: 무차별 로그인, 웹 주입, 권한 가로채기, 자료 빼돌리기 탐지 과제</li>
+        </ul>
+        <p class="limit"><b>한계</b> 시작 틀과 일부 기능은 과정에서 제공된 것입니다. 자료는 모두 가상 메모입니다.</p>
+        <div class="links"><a class="go" href="https://choi-bujang-secret-vault-tr33.vercel.app">열어 보기</a><a href="https://github.com/zaqxsw108091-create/choi-bujang-secret-vault">저장소</a></div>
+      </div>
+    </article>
+
+    <article class="card row flip">
       <a class="pic" href="https://about-me-passkey.vercel.app/"><img src="assets/passkey.png" alt="패스키 로그인을 붙인 소개 페이지 화면" loading="lazy"></a>
       <div class="txt">
+        <p style="margin-bottom:8px"><span class="tag team">보안과정 과제</span></p>
         <h3>나만 들어가기: 비밀번호 없는 로그인</h3>
         <p class="one">소개 페이지 아래에 패스키(WebAuthn)로만 들어가는 비공개 자리를 붙였습니다. 다른 계정의 자료를 요청하면 서버가 거부합니다.</p>
         <ul class="chips"><li>JavaScript</li><li>WebAuthn</li><li>Firestore</li><li>Vercel</li></ul>
@@ -501,21 +528,6 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
         </ul>
         <p class="proof"><b>확인</b> 가상 패스키로 돌리는 자동 시험 51개 (SKT 알레프 과제 8)</p>
         <div class="links"><a class="go" href="https://about-me-passkey.vercel.app/">열어 보기</a><a href="https://github.com/zaqxsw108091-create/about-me-passkey">저장소</a></div>
-      </div>
-    </article>
-
-    <article class="card row">
-      <a class="pic" href="assets/pc-dashboard.png"><img src="assets/pc-dashboard.png" alt="내 PC 관제 대시보드 화면 (예제 모드)" loading="lazy"></a>
-      <div class="txt">
-        <h3>내 PC 관제 대시보드</h3>
-        <p class="one">Windows PC의 CPU, 메모리, 디스크, 방화벽 상태를 읽기만 해서 정상, 주의, 확인 불가로 보여 줍니다.</p>
-        <ul class="chips"><li>Node.js</li><li>v0.3.1</li></ul>
-        <ul class="pts">
-          <li>처음 상태를 기준선으로 기억하고 새로 열린 포트, 새 시작프로그램, 꺼진 방화벽을 알림</li>
-          <li>설정을 바꾸지 않고, 외부 서버로 아무것도 보내지 않음</li>
-        </ul>
-        <p class="limit"><b>한계</b> 보안 제품이 아니라 상태를 보여 주는 도구입니다. 왼쪽 화면은 예제 모드의 가짜 값입니다.</p>
-        <div class="links"><a href="https://github.com/zaqxsw108091-create/pc-control-dashboard">저장소</a></div>
       </div>
     </article>
   </div>
