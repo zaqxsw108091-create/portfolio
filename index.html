@@ -361,11 +361,11 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
           </div>
         </div>
         <ul class="files">
-          <li><span class="mono">report.py</span><span>티켓과 조치 기록을 모아 기술자용(6항목), 경영진용(4항목) 보고서를 만듭니다.</span></li>
+          <li><span class="mono">report.py</span><span>티켓과 조치 기록을 모아 기술팀용(상세, 6항목), 경영진용(요약, 4항목) 초동대응 보고서를 만듭니다.</span></li>
           <li><span class="mono">ticket.py</span><span>사건마다 티켓을 만들고 상태(승인대기, 조치중, 완료, 거절, 오탐, 실패, 모니터링)를 관리합니다.</span></li>
           <li><span class="mono">playbook.py</span><span>등급과 사건 유형에 따라 "무엇을 할지" 대응 요청서를 만듭니다.</span></li>
           <li><span class="mono">false_positive.py</span><span>관리자가 오탐이라고 판단하면 차단 해제 요청을 만들고 오탐 기록을 남깁니다.</span></li>
-          <li><span class="mono">classifier.py</span><span>팀이 정한 기준(70점 이상 즉시 차단, 50~69점 승인 후 차단, 미만 모니터링)을 적용합니다.</span></li>
+          <li><span class="mono">classifier.py</span><span>팀이 정한 기준(70점 이상 즉시 자동조치, 50~69점 승인 후 조치, 미만 모니터링)을 적용합니다.</span></li>
           <li><span class="mono">main.py</span><span>위 파일들을 순서대로 실행합니다.</span></li>
         </ul>
       </div>
@@ -395,6 +395,23 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
           <figcaption>pfSense 방화벽 규칙. 맨 위 줄이 보안 콘솔이 차단 목록(soar_block)에 넣은 IP를 막는 규칙입니다. (방화벽 설정은 조원 담당)</figcaption>
         </figure>
         <p style="margin-top:12px;font-size:15.5px">팀 문서에 11월 4일 pfSense 실제 차단·해제 시험 기록이 있습니다.</p>
+
+        <p style="margin-top:22px;font-size:15.5px"><b>제 파트의 결과물: 보고서와 티켓</b></p>
+        <figure style="margin-top:10px">
+          <a href="assets/astra-report-tech-bottom.jpg"><img src="assets/astra-report-tech-bottom.jpg" alt="기술팀용 초동대응 보고서 화면. 탐지 근거, 시간순 사고 경위(11-03 IP 차단, 차단 해제, 11-05 차단 성공), 조치 내역, 현재 상태, 후속 조치 항목" loading="lazy"></a>
+          <figcaption>기술팀용(상세) 초동대응 보고서. 탐지 근거, 시간순 사고 경위, 조치 내역, 현재 상태, 후속 조치가 들어갑니다. 사고 경위에 11월 3일 차단과 차단 해제, 11월 5일 차단 성공 기록이 남아 있습니다.</figcaption>
+        </figure>
+        <div class="two" style="margin-top:14px">
+          <figure>
+            <a href="assets/astra-report-exec.jpg"><img src="assets/astra-report-exec.jpg" alt="경영진용 요약 보고서 화면. 4개 항목으로 된 요약" loading="lazy"></a>
+            <figcaption>같은 사건의 경영진용(요약) 보고서. 4항목으로 짧게 줄였습니다.</figcaption>
+          </figure>
+          <figure>
+            <a href="assets/astra-ticket-detail.jpg"><img src="assets/astra-ticket-detail.jpg" alt="티켓 상세 화면. TKT-EVT-002, 처리 결과 성공 pfSense 차단 192.168.30.2, 오탐으로 처리 버튼" loading="lazy"></a>
+            <figcaption>티켓 상세. 처리 결과 "성공 · pfSense 차단: 192.168.30.2"와 "오탐으로 처리" 버튼이 있습니다.</figcaption>
+          </figure>
+        </div>
+        <p style="font-size:14.5px;color:var(--sub);margin-top:10px">이 세 장은 2026.11.18에 캡스톤 VM을 다시 켜고 직접 찍었습니다. 환경이 바뀌어 콘솔 주소(IP) 한 줄만 고쳤고, 화면의 사건 시각(11.03, 11.05)은 캡스톤 기간에 저장된 기록입니다.</p>
       </div>
     </div>
 
