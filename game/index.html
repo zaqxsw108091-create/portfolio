@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>윤대영 포트폴리오 | 게임 QA, 개발, 기획</title>
+<meta name="description" content="윤대영 포트폴리오. 게임 QA·개발·기획 신입 지원. 직접 한 일과 AI와 함께 한 일, 한계를 나눠 적었습니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600;700;800;900&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F5F8; --card:#FFFFFF; --ink:#141A24; --sub:#566070; --line:#DADEE6;
+  --dark:#0E1A2E; --dark2:#17305A; --accent:#1D5FC2; --accent-soft:#E3EDFB; --glow:#8CC8FF;
+  --warn:#8A5200; --warn-soft:#FCEFD6;
+}
+body[data-track="game"]{--dark:#201A2C; --dark2:#3A2A4A; --accent:#B8480F; --accent-soft:#FBEADF; --glow:#FFB25C;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans KR",sans-serif;font-size:17px;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
+h1,h2,h3,h4{font-family:"Gothic A1",sans-serif;line-height:1.28;margin:0;letter-spacing:-.01em}
+p{margin:0}
+a{color:var(--accent);text-underline-offset:3px}
+img{max-width:100%;display:block}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--glow);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.mono{font-family:"IBM Plex Mono",monospace}
+body[data-track="security"] .game-only,body[data-track="game"] .sec-only{display:none !important}
+
+/* 상단 바 */
+.bar{position:sticky;top:0;z-index:20;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.12)}
+.bar .wrap{display:flex;align-items:center;gap:14px;min-height:60px}
+.bar .me{font-family:"Gothic A1",sans-serif;font-weight:800;color:#fff;font-size:18px;margin-right:auto;text-decoration:none}
+.tabs{display:flex;gap:4px;background:rgba(255,255,255,.1);padding:4px;border-radius:10px}
+.tabs button{font:inherit;font-family:"Gothic A1",sans-serif;font-weight:700;font-size:15px;padding:8px 16px;border:0;border-radius:7px;background:transparent;color:#C8D0DC;cursor:pointer}
+.tabs button[aria-selected="true"]{background:#fff;color:var(--dark)}
+.bar .out{color:#fff;font-size:14.5px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,.35);padding:6px 12px;border-radius:7px}
+.bar .out:hover{background:#fff;color:var(--dark)}
+
+/* 히어로 */
+.hero{background:linear-gradient(160deg,var(--dark) 0%,var(--dark2) 100%);color:#fff;padding:64px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero .role{display:inline-block;font-weight:600;font-size:15px;color:var(--glow);border:1px solid currentColor;border-radius:999px;padding:4px 14px;margin-bottom:18px}
+.hero h1{font-size:clamp(34px,5.2vw,56px);font-weight:900;letter-spacing:-.03em}
+.hero h1 em{font-style:normal;color:var(--glow)}
+.hero .lead{font-size:19px;color:#D6DCE6;margin-top:18px;max-width:30em}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{display:inline-block;padding:12px 20px;border-radius:9px;font-weight:700;font-size:16px;text-decoration:none;font-family:"Gothic A1",sans-serif}
+.btn.fill{background:var(--glow);color:#0A1220}
+.btn.line{border:1.5px solid rgba(255,255,255,.5);color:#fff}
+.btn.fill:hover{filter:brightness(1.08)} .btn.line:hover{background:rgba(255,255,255,.12)}
+
+/* 히어로 오른쪽: 시연 기록 */
+.replay{background:#08111F;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:20px 22px;font-size:15px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.replay .cap{color:#9AA6B8;font-size:13.5px;margin-bottom:12px}
+.replay ol{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.replay li{display:grid;grid-template-columns:86px 1fr;gap:12px;align-items:start;opacity:0;animation:rise .5s ease forwards}
+.replay li:nth-child(1){animation-delay:.2s}.replay li:nth-child(2){animation-delay:.7s}.replay li:nth-child(3){animation-delay:1.2s}.replay li:nth-child(4){animation-delay:1.7s}.replay li:nth-child(5){animation-delay:2.2s}
+.replay .k{font-family:"IBM Plex Mono",monospace;font-size:13px;color:#0A1220;background:var(--glow);border-radius:5px;padding:2px 6px;text-align:center;font-weight:600}
+.replay .k.red{background:#FF8A7A}
+.replay .v{color:#EAEEF4}
+.replay .v small{display:block;color:#9AA6B8;font-size:13.5px}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.shots3{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.shots3 img{border-radius:10px;border:1px solid rgba(255,255,255,.18);aspect-ratio:16/10;object-fit:cover;width:100%}
+.shots3 a:first-child{grid-column:1 / -1}
+
+/* 숫자 띠 */
+.stats{margin-top:-36px;position:relative;z-index:2}
+.stats ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);border-radius:14px;box-shadow:0 10px 30px rgba(15,22,40,.10);overflow:hidden}
+.stats li{padding:20px 22px;border-right:1px solid var(--line);font-size:14.5px;color:var(--sub);line-height:1.45}
+.stats li:last-child{border-right:0}
+.stats b{display:block;font-family:"Gothic A1",sans-serif;font-weight:900;font-size:30px;color:var(--ink);letter-spacing:-.02em;margin-bottom:4px}
+
+/* 섹션 공통 */
+section.blk{padding:64px 0 0}
+.h2{font-size:clamp(26px,3.6vw,34px);font-weight:900;letter-spacing:-.02em}
+.h2sub{color:var(--sub);margin-top:8px;max-width:42em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:3px 10px;border-radius:5px;line-height:1.5}
+.tag.me{background:var(--ink);color:#fff}
+.tag.ai{background:var(--accent-soft);color:var(--accent)}
+.tag.team{background:#E8EBF0;color:#39424F}
+.tag.lim{background:var(--warn-soft);color:var(--warn)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;padding:0;list-style:none}
+.chips li{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:2px 8px;color:var(--sub)}
+ul.pts{margin:10px 0 0;padding-left:19px;font-size:16px}
+ul.pts li{margin:4px 0}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.links a{font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid var(--accent);color:var(--accent);padding:7px 14px;border-radius:8px;font-family:"Gothic A1",sans-serif}
+.links a.go{background:var(--accent);color:#fff}
+.links a:hover{filter:brightness(1.1)}
+.limit{margin-top:14px;font-size:15px;background:var(--warn-soft);color:#5C3900;border-radius:8px;padding:10px 14px}
+.limit b{color:var(--warn)}
+.proof{margin-top:14px;font-size:15.5px;background:var(--accent-soft);border-radius:8px;padding:10px 14px}
+.proof b{color:var(--accent)}
+figure{margin:0}
+figure img{border-radius:10px;border:1px solid var(--line);width:100%}
+figcaption{font-size:13.5px;color:var(--sub);margin-top:8px}
+.todo{margin-top:14px;border:2px dashed var(--line);border-radius:10px;padding:22px 16px;text-align:center;font-size:14.5px;color:var(--sub);background:var(--bg)}
+
+/* ASTRA 사례 */
+.case{margin-top:28px;overflow:hidden}
+.case-head{background:var(--dark);color:#fff;padding:30px 32px}
+.case-head h3{font-size:clamp(24px,3.2vw,32px);font-weight:900}
+.case-head p{color:#D6DCE6;margin-top:10px;max-width:44em}
+.case-head .meta{font-size:14.5px;color:#A7B2C3;margin-top:12px}
+.step{padding:32px;border-top:1px solid var(--line);display:grid;grid-template-columns:200px 1fr;gap:28px}
+.step:first-of-type{border-top:0}
+.step>h4{font-size:20px;font-weight:800}
+.step>h4 span{display:block;font-family:"IBM Plex Sans KR",sans-serif;font-weight:400;font-size:14px;color:var(--sub);margin-top:6px;line-height:1.5}
+.atk{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.atk>div{border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:15px}
+.atk h5{margin:0 0 4px;font-family:"Gothic A1",sans-serif;font-size:16.5px}
+.atk .score{float:right;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13px;background:#FFE3DE;color:#9B2414;border-radius:5px;padding:1px 7px}
+.atk p{color:var(--sub)}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:0;padding:0;list-style:none;font-size:14.5px}
+.flow li{position:relative;background:var(--bg);border:1px solid var(--line);padding:12px 8px 12px 18px;font-weight:700;font-family:"Gothic A1",sans-serif}
+.flow li+li{border-left:0}
+.flow li span{display:block;font-family:"IBM Plex Sans KR",sans-serif;font-weight:400;font-size:13px;color:var(--sub)}
+.flow li.mine{background:var(--accent);border-color:var(--accent);color:#fff}
+.flow li.mine span{color:#E1ECFB}
+.who{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.who>div{border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.who ul{margin:8px 0 0;padding-left:18px;font-size:15px}
+.who li{margin:3px 0}
+.files{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:15px}
+.files li{display:grid;grid-template-columns:170px 1fr;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.files .mono{font-size:13.5px;font-weight:600;color:var(--accent)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 14px;padding:0;list-style:none}
+.nums li{border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--sub)}
+.nums b{display:block;font-family:"Gothic A1",sans-serif;font-weight:900;font-size:26px;color:var(--ink)}
+.next{margin:0;padding-left:19px;font-size:15.5px}
+
+/* 프로젝트 행 */
+.rows{display:grid;gap:18px;margin-top:28px}
+.row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:0;overflow:hidden}
+.row .pic{background:#0C1322;display:block;min-height:260px}
+.row .pic img{width:100%;height:100%;object-fit:cover;object-position:top;border:0;border-radius:0}
+.row .txt{padding:26px 28px}
+.row h3{font-size:22px;font-weight:800}
+.row .one{margin-top:8px}
+.row.flip .pic{order:2}
+.nopic{display:flex;align-items:center;justify-content:center;padding:26px;background:var(--dark);color:#fff}
+.bug{width:100%;font-size:14.5px;display:grid;gap:10px}
+.bug div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:9px;padding:10px 12px}
+.bug b{display:block;color:var(--glow);font-family:"Gothic A1",sans-serif}
+.bug span{color:#D6DCE6}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.mini{padding:20px 22px}
+.mini h3{font-size:18px;font-weight:800}
+.mini p{font-size:15.5px;margin-top:6px;color:#2B3340}
+.mini .links a{padding:5px 11px;font-size:14px}
+
+/* AI 방식 */
+.aiway{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:26px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.aiway li{list-style:none;background:var(--card);padding:22px;border-right:1px solid var(--line);font-size:15.5px}
+.aiway li:last-child{border-right:0}
+.aiway b{display:block;font-family:"Gothic A1",sans-serif;font-weight:800;font-size:18px;margin-bottom:6px}
+.aiway .n{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--accent);font-weight:600}
+.fix{padding:22px 24px}
+.fix h3{font-size:18px;font-weight:800;margin-bottom:10px}
+.fix dl{margin:0;display:grid;grid-template-columns:52px 1fr;gap:6px 12px;font-size:15.5px}
+.fix dt{color:var(--sub);font-weight:600}
+.fix dd{margin:0}
+.honest{margin-top:16px;padding:20px 24px;border-left:6px solid var(--ink);background:var(--card);border-radius:0 12px 12px 0;font-size:16px}
+table.tests{width:100%;border-collapse:collapse;font-size:15.5px}
+table.tests th,table.tests td{padding:11px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+table.tests th{font-size:13.5px;color:var(--sub);font-weight:500}
+table.tests tr:last-child td{border-bottom:0}
+table.tests td.n{font-family:"IBM Plex Mono",monospace;font-weight:600;white-space:nowrap;color:var(--accent)}
+.tablebox{overflow-x:auto;margin-top:22px}
+.about{padding:8px 26px;margin-top:22px}
+.about dl{margin:0}
+.about dl>div{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px}
+.about dl>div:last-child{border-bottom:0}
+.about dt{color:var(--sub);font-weight:600}
+.about dd{margin:0}
+footer{margin-top:72px;background:var(--dark);color:#C8D0DC;padding:40px 0 48px;font-size:15px}
+footer h2{color:#fff;font-size:26px;font-weight:900}
+footer a{color:#fff}
+footer .cta{margin-top:18px}
+footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;gap:32px}
+  .stats ul{grid-template-columns:1fr 1fr}
+  .stats li:nth-child(2){border-right:0}
+  .stats li:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .step{grid-template-columns:1fr;gap:14px;padding:24px 20px}
+  .case-head{padding:24px 20px}
+  .row,.two,.who{grid-template-columns:1fr}
+  .row.flip .pic{order:0}
+  .row .pic{min-height:0;aspect-ratio:16/10}
+  .grid3{grid-template-columns:1fr}
+  .aiway{grid-template-columns:1fr 1fr}
+  .aiway li:nth-child(2){border-right:0}
+  .aiway li:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .flow{grid-template-columns:1fr}
+  .flow li+li{border-left:1px solid var(--line);border-top:0}
+  .flow li.mine+li{border-left:1px solid var(--line)}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .bar .out{display:none}
+  .tabs button{padding:8px 11px;font-size:14px}
+  .hero{padding:40px 0 60px}
+  .atk,.nums{grid-template-columns:1fr}
+  .aiway{grid-template-columns:1fr}
+  .aiway li{border-right:0;border-bottom:1px solid var(--line)}
+  .files li{grid-template-columns:1fr;gap:2px}
+  .about dl>div{grid-template-columns:1fr;gap:2px}
+  .row .txt{padding:20px}
+  .replay li{grid-template-columns:76px 1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.replay li{animation:none;opacity:1}}
+</style>
+</head>
+<body data-track="game">
+
+<header class="bar">
+  <div class="wrap">
+    <a class="me" href="#top">윤대영</a>
+    <a class="out" href="https://github.com/zaqxsw108091-create">GitHub</a>
+  </div>
+</header>
+
+<!-- ============ 히어로 ============ -->
+<div class="hero" id="top">
+  <div class="wrap game-only">
+    <div>
+      <span class="role">게임 QA, 개발, 기획 신입 지원</span>
+      <h1>게임을 만들고,<br><em>버그를 찾아 고친</em><br>기록입니다.</h1>
+      <p class="lead">직접 기획한 게임을 AI와 함께 만들었습니다. 만든 뒤에는 자동 테스트와 직접 플레이로 버그를 찾고, 원인과 고친 내용을 저장소에 남겼습니다.</p>
+      <div class="cta">
+        <a class="btn fill" href="#play">바로 플레이할 게임 보기</a>
+        <a class="btn line" href="mailto:zaqxsw108091@gmail.com">이메일 보내기</a>
+      </div>
+    </div>
+    <div class="shots3">
+      <a href="https://zaqxsw108091-create.github.io/OVER_SHOT/"><img src="../assets/overshot-play1.jpg" alt="OVERSHOT 플레이 화면. 카타나를 든 1인칭 시점 앞에 적 로봇이 서 있다"></a>
+      <a href="https://zaqxsw108091-create.github.io/echo-park/ECHO_PARK/game.html"><img src="../assets/echopark-play.jpg" alt="에코 파크 스테이지 2-1 플레이 화면"></a>
+      <a href="https://github.com/zaqxsw108091-create/DRSIM_K"><img src="../assets/drsim-play.jpg" alt="DRSIM-K 임무 수행 화면"></a>
+    </div>
+  </div>
+</div>
+
+<div class="stats wrap">
+  <ul class="game-only">
+    <li><b>3개</b>설치 없이 브라우저에서 바로 되는 게임</li>
+    <li><b>53 + 60</b>Unity 게임 2개의 자동 플레이 테스트 항목</li>
+    <li><b>130 → 240</b>고친 뒤 AI 차량 평균 속도 (km/h)</li>
+    <li><b>110 + 40</b>Touch Flip 유닛·서버 테스트</li>
+  </ul>
+</div>
+
+<main>
+
+<!-- ===================== 게임 ===================== -->
+<div id="panel-game" class="game-only">
+
+<section class="blk wrap">
+  <h2 class="h2">대표 프로젝트: 3D 레이싱 게임</h2>
+  <p class="h2sub">만든 것보다 고친 것을 먼저 적었습니다. QA에서 하는 일과 가장 가깝기 때문입니다.</p>
+  <div class="rows">
+    <article class="card row">
+      <div class="pic nopic">
+        <div class="bug">
+          <div><b>AI가 8km 앞으로 순간이동</b><span>원인: 체크포인트를 잇는 직선이 도로가 아닌 허공을 지남. 도로를 따르는 경로(웨이포인트 679개)로 교체.</span></div>
+          <div><b>한쪽 차 모델만 자주 넘어짐</b><span>원인: 모델 두 종류에 같은 무게중심 값. 바퀴 높이 기준 계산으로 수정.</span></div>
+          <div><b>AI 평균 속도 약 130km/h</b><span>원인: 직선에서도 브레이크, 앞차 뒤에서 줄지어 감속. 고친 뒤 평균 약 240km/h.</span></div>
+          <figure style="margin-top:4px">
+            <a href="../assets/f1-path.jpg"><img src="../assets/f1-path.jpg" alt="Unity 편집 화면. 도로 가운데를 따라 경로 점이 줄지어 있고 차량들이 그 위에 서 있다" loading="lazy" style="border-color:rgba(255,255,255,.2)"></a>
+            <figcaption style="color:#C8D0DC">Unity 편집 화면. 도로 가운데를 따라 놓인 점들이 AI 차량이 따라가는 경로입니다.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="txt">
+        <h3>Formula One World Championship</h3>
+        <p class="one">수동 변속으로 차를 몰아 AI 차량 6대와 5바퀴를 겨루는 레이싱 게임입니다.</p>
+        <ul class="chips"><li>Unity 6</li><li>C#</li></ul>
+        <ul class="pts">
+          <li>RPM-토크 곡선, 기어별 최고 속도, 회전수 제한기, 트랙션 컨트롤</li>
+          <li>부스터, 드리프트, 실시간 순위, 0→100km/h 기록 측정</li>
+          <li>AI 차량의 코너 감속, 충돌 회피, 이탈 복구</li>
+        </ul>
+        <p class="proof"><b>확인</b> Unity에서 실제로 씬을 실행하는 자동 플레이 테스트 53개. 고칠 때마다 같은 테스트로 다시 확인했습니다.</p>
+        <div class="two" style="margin-top:14px">
+          <figure><a href="../assets/f1-play1.jpg"><img src="../assets/f1-play1.jpg" alt="Formula One 주행 화면. 바로 앞과 옆에 AI 차량 네 대가 보이고 오른쪽에 실시간 순위가 표시된다" loading="lazy"></a></figure>
+          <figure><a href="../assets/f1-play2.jpg"><img src="../assets/f1-play2.jpg" alt="Formula One 주행 화면. 6단 기어, 시속 195km, 순위 1위" loading="lazy"></a></figure>
+        </div>
+        <p style="font-size:13.5px;color:var(--sub);margin-top:8px">Unity에서 실행한 주행 화면. 왼쪽에 속도, RPM, 기어, 부스트가 있고 오른쪽에 랩, 시간, 실시간 순위가 있습니다.</p>
+        <div class="links"><a href="https://github.com/zaqxsw108091-create/formula-one-racing">저장소 (실행 방법 포함)</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="blk wrap" id="play">
+  <h2 class="h2">바로 플레이할 수 있는 게임</h2>
+  <p class="h2sub">설치와 로그인 없이 브라우저에서 열립니다.</p>
+  <div class="rows">
+    <article class="card row flip">
+      <a class="pic" href="https://zaqxsw108091-create.github.io/echo-park/ECHO_PARK/game.html"><img src="../assets/echopark-play.jpg" alt="에코 파크 스테이지 2-1 플레이 화면. NPC 세 명이 버튼을 누르고 있고 출구로 이동하라는 안내가 떠 있다" loading="lazy" style="object-position:center"></a>
+      <div class="txt">
+        <h3>에코 파크: 협동 퍼즐 플랫포머</h3>
+        <p class="one">내 행동을 녹화해 루프로 재생하는 "에코"로 혼자서도, 동료와 함께도 푸는 퍼즐입니다.</p>
+        <ul class="chips"><li>JavaScript</li><li>Phaser 3.60</li><li>파일 하나</li></ul>
+        <ul class="pts">
+          <li>에코 슬롯 3개. 에코가 버튼 위에 있으면 눌린 상태로 유지</li>
+          <li>성격이 다른 NPC 5명, 스테이지 7개</li>
+          <li>솔로부터 4인까지 모두 클리어할 수 있게 설계</li>
+        </ul>
+        <p class="limit"><b>한계</b> 세 번째 월드는 준비 중입니다.</p>
+        <div class="links"><a class="go" href="https://zaqxsw108091-create.github.io/echo-park/ECHO_PARK/game.html">플레이</a><a href="https://github.com/zaqxsw108091-create/echo-park">저장소</a></div>
+      </div>
+    </article>
+
+    <article class="card row">
+      <a class="pic" href="https://zaqxsw108091-create.github.io/touch-flip/"><img src="../assets/touchflip-play.jpg" alt="Touch Flip 대전 화면. 5x5 카드가 파랑 8장, 분홍 5장으로 뒤집혀 있고 남은 시간 22.8초" loading="lazy" style="object-position:center"></a>
+      <div class="txt">
+        <h3>Touch Flip: 카드 뒤집기 대전</h3>
+        <p class="one">5x5 카드를 더 빨리 내 색으로 뒤집는 대전입니다. 원칙은 "기기 성능 차이가 승부에 영향을 주면 안 된다"입니다.</p>
+        <ul class="chips"><li>TypeScript</li><li>Java Spring Boot</li><li>WebSocket</li></ul>
+        <ul class="pts">
+          <li>주사율 높은 기기가 유리하지 않도록 판정 시각을 입력 이벤트 시각 기준으로 처리</li>
+          <li>NPC 1~5단계도 사람과 같은 입력 제한을 받음</li>
+        </ul>
+        <p class="proof"><b>확인</b> 유닛 테스트 110개, 서버 테스트 40개</p>
+        <p class="limit"><b>한계</b> 기기 2대 온라인 대전은 별도 서버가 필요해 공개 데모에서는 되지 않습니다.</p>
+        <div class="links"><a class="go" href="https://zaqxsw108091-create.github.io/touch-flip/">플레이</a><a href="https://github.com/zaqxsw108091-create/touch-flip">저장소</a></div>
+      </div>
+    </article>
+
+    <article class="card row flip">
+      <a class="pic" href="https://zaqxsw108091-create.github.io/OVER_SHOT/"><img src="../assets/overshot-play1.jpg" alt="OVERSHOT 플레이 화면. 카타나 영웅 시점, 적 로봇, 미니맵, 체력과 남은 적 표시" loading="lazy" style="object-position:center"></a>
+      <div class="txt">
+        <h3>OVERSHOT: 1인칭 슈팅</h3>
+        <p class="one">프레임워크와 빌드 도구 없이 JavaScript와 Canvas만으로 만든 레이캐스팅 FPS입니다.</p>
+        <ul class="chips"><li>Vanilla JS</li><li>Canvas</li><li>WebGL2</li></ul>
+        <ul class="pts">
+          <li>16x16 타일 맵을 광선 계산으로 실시간 렌더링</li>
+          <li>무기와 스킬이 다른 영웅 4명 (돌격소총, 저격총, 해머, 카타나)</li>
+          <li>카타나 3D 모델은 Meshy AI로 만들어 넣음</li>
+        </ul>
+        <figure style="margin-top:14px">
+          <a href="../assets/overshot-play2.jpg"><img src="../assets/overshot-play2.jpg" alt="OVERSHOT 돌격소총 영웅 플레이 화면" loading="lazy"></a>
+          <figcaption>돌격소총 영웅 화면. 왼쪽 위 미니맵, 가운데 위 처치 수와 남은 적과 시간, 아래 스킬 준비 상태.</figcaption>
+        </figure>
+        <div class="links"><a class="go" href="https://zaqxsw108091-create.github.io/OVER_SHOT/">플레이</a><a href="https://github.com/zaqxsw108091-create/OVER_SHOT">저장소</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="blk wrap">
+  <h2 class="h2">그 밖의 게임 작업</h2>
+  <div class="rows">
+    <article class="card row">
+      <a class="pic" href="../assets/drsim-play.jpg"><img src="../assets/drsim-play.jpg" alt="DRSIM-K 임무 수행 화면. 3인칭 시점의 드론과 나침반, 고도, 임무 목록, 미니맵이 보인다" loading="lazy" style="object-position:center"></a>
+      <div class="txt">
+        <h3>DRSIM-K: 3D 드론 비행 시뮬레이션</h3>
+        <p class="one">브라우저에서 도는 드론 비행 시뮬레이션입니다.</p>
+        <ul class="chips"><li>Vanilla JS</li><li>Three.js</li></ul>
+        <ul class="pts"><li>드론 20종, 임무 8개 (정찰, 타격, 방어)</li><li>키보드, 게임패드, 마우스 입력</li></ul>
+        <div class="links"><a href="https://github.com/zaqxsw108091-create/DRSIM_K">저장소</a></div>
+      </div>
+    </article>
+    <article class="card row flip">
+      <a class="pic" href="../assets/2dcombat-play.jpg"><img src="../assets/2dcombat-play.jpg" alt="2DCombat 플레이 화면. 발판 위의 적과 체력바가 보인다" loading="lazy" style="object-position:center"></a>
+      <div class="txt">
+        <h3>2DCombat: 2D 액션 전투 (학습용)</h3>
+        <p class="one">Unity 교육 과정에서 강사 지도에 따라 만든 학습용 프로젝트입니다. 코드 구조와 기능은 수업을 따랐습니다.</p>
+        <ul class="chips"><li>Unity 2022.3</li><li>C#</li></ul>
+        <ul class="pts">
+          <li>직접 정한 것: 무기 디자인, 몬스터 위치와 수, 사운드 선택</li>
+          <li>2026년 11월 점검에서 점프, 스킬 쿨타임, 스킬 트리 버그를 고침</li>
+        </ul>
+        <p class="proof"><b>확인</b> Unity 자동 플레이 테스트 60개. 고친 뒤 모두 통과.</p>
+        <div class="links"><a href="https://github.com/zaqxsw108091-create/2DCombat">저장소</a></div>
+      </div>
+    </article>
+  </div>
+  <div class="grid3" style="grid-template-columns:1fr 1fr">
+    <article class="card mini">
+      <h3>하찮은 속보</h3>
+      <p>앱인토스 바이브코딩 챌린지(2026.08) 출품작. "오늘 당신이 해낸 일도 소식입니다"가 주제인 토스 미니앱입니다.</p>
+      <!-- TODO 하찮은 속보: 앱 화면(홈, 속보 상세)을 받으면 아래 빈칸을 img로 교체 -->
+      <div class="todo">앱 화면 자리 (홈 화면, 속보 상세 화면). 곧 넣겠습니다.</div>
+      <div class="links"><a href="https://github.com/zaqxsw108091-create/petty-news">저장소</a></div>
+    </article>
+    <article class="card mini">
+      <h3>게임 교육</h3>
+      <p>SBS게임아카데미 (2023, 약 6개월). C언어 기초부터 Unity 기초까지 배웠습니다.</p>
+    </article>
+  </div>
+</section>
+</div>
+
+<!-- ===================== 공통 ===================== -->
+<section class="blk wrap">
+  <h2 class="h2">AI와 일하는 방식</h2>
+  <p class="h2sub">AI가 짠 것을 그대로 믿지 않고, 확인할 수 있는 형태로 만듭니다.</p>
+  <ol class="aiway" style="padding:0;margin-bottom:0">
+    <li><span class="n">1단계</span><b>내가 정한다</b>무엇을 만들지, 어떤 기능을 넣고 뺄지 정합니다.</li>
+    <li><span class="n">2단계</span><b>AI가 짠다</b>Claude(Claude Code), Codex, ChatGPT, Gemini에게 화면, 로직, 테스트 코드를 맡깁니다.</li>
+    <li><span class="n">3단계</span><b>테스트로 확인한다</b>실행하고, 자동 테스트를 돌리고, 틀린 곳을 찾아 고치게 합니다. 최종 테스트는 직접 합니다.</li>
+    <li><span class="n">4단계</span><b>기록하고 한계를 적는다</b>저장소에 "내가 정한 것, AI가 짠 것, 고친 것"과 한계를 나눠 남깁니다.</li>
+  </ol>
+  <p class="honest">솔직하게 적습니다. 여기 있는 코드는 대부분 AI와 함께 만들었고, 제 C, Java, Python 문법은 기초 수준입니다. 캡스톤에서 처음 막힌 곳도 return, 딕셔너리, ==와 =의 차이 같은 기초였습니다. 그래서 프로젝트마다 직접 한 것과 AI와 함께 한 것, 한계를 나눠 적었습니다.</p>
+
+  <div class="card tablebox">
+    <table class="tests">
+      <thead><tr><th>프로젝트</th><th>자동 테스트</th><th>무엇을 확인하나</th></tr></thead>
+      <tbody>
+        <tr><td>Touch Flip</td><td class="n">110 + 40</td><td>게임 규칙, 입력 공정성, NPC, 온라인 서버</td></tr>
+        <tr><td>2DCombat</td><td class="n">60</td><td>Unity에서 실제 플레이를 자동으로 재현</td></tr>
+        <tr><td>Formula One</td><td class="n">53</td><td>가속, 최고속, AI 주행</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="blk wrap">
+  <h2 class="h2">이력</h2>
+  <div class="card about">
+    <dl>
+      <div><dt>학력</dt><dd>학점은행제 공업전문학사 정보처리전공, 평점 3.8/4.5 (졸업예정, 2026.12.15 학위신청 예정)<br>마산제일고등학교 졸업 (2018.02, 자연계열)</dd></div>
+      <div><dt>교육</dt><dd>SKT 알레프 보안과정, 코리아IT아카데미 (2026.08.11~11.12)<br>SBS게임아카데미, C언어부터 Unity 기초 (2023, 약 6개월)</dd></div>
+      <div><dt>자격</dt><dd>네트워크관리사 2급 필기 합격 (2026.11.03), 실기 12.06 응시 예정<br>한국사능력검정 1급 (2016), 운전면허 1종 보통</dd></div>
+      <div><dt>경력</dt><dd>케이제이로지텍 물류 (2025.06~2025.08). 적재와 피킹, 앱 기록, 적재 사진 증빙</dd></div>
+      <div><dt>근무 조건</dt><dd>야간·교대근무 가능, 합격 시 서울·경기 이사 가능</dd></div>
+      <div><dt>일하는 태도</dt><dd>정해진 규칙을 지키고, 확인한 것을 기록으로 남깁니다. 팀에서 아무도 고르지 않은 파트를 맡았고, 시간이 부족할 때는 "최소 작업물을 먼저 만들고 남는 시간에 기능을 더하자"고 제안했습니다.</dd></div>
+    </dl>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>연락처</h2>
+    <div class="cta">
+      <a class="btn fill" href="mailto:zaqxsw108091@gmail.com">zaqxsw108091@gmail.com</a>
+      <a class="btn line" href="https://github.com/zaqxsw108091-create">GitHub</a>
+    </div>
+    <small>이 사이트도 Claude와 함께 만들었습니다. 내용은 이력서, 캡스톤 자료, 각 저장소의 README와 작업기록에서 확인되는 것만 넣었습니다. (2026.11.14 기준)</small>
+  </div>
+</footer>
+
+</body>
+</html>
