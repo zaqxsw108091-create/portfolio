@@ -273,7 +273,7 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
     <div class="case-head">
       <h3>로그에서 공격을 찾아 방화벽에서 막고, 보고서로 남기기</h3>
       <p>가상의 우주선 "아스트라호"의 운영 서버를 지키는 설정입니다. 수상한 접속을 로그에서 찾아 위험 점수를 매기고, 점수에 따라 자동으로 또는 승인 후에 방화벽(pfSense)에서 막고, 그 과정을 티켓과 보고서로 남깁니다.</p>
-      <p class="meta">SKT 알레프 보안과정 캡스톤, 4인 팀, 2026.10.22~11.05 (약 2주)</p>
+      <p class="meta">SKT ALEPH 보안과정 캡스톤, 4인 팀, 2026.10.22~11.05 (약 2주)</p>
     </div>
 
     <div class="step">
@@ -287,7 +287,7 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
     </div>
 
     <div class="step">
-      <h4>공격 4가지<span>발표에서 제가 공격자 역할을 맡아 실행했고, 4가지 모두 탐지되고 차단되는 것을 확인했습니다.</span></h4>
+      <h4>공격 4가지<span>발표에서 제가 공격자 역할을 맡아 실행했고, 4가지 모두 탐지되고 pfSense에서 IP 차단되는 것을 확인했습니다. 공격마다 다른 조치를 붙일 시간이 부족해, 콘솔에는 4가지 모두 "IP 차단"으로 표시됩니다.</span></h4>
       <div>
       <figure style="margin-bottom:14px">
         <a href="../assets/astra-attack-demo.png"><img src="../assets/astra-attack-demo.png" alt="발표 시연 화면. VLAN 30의 감염된 PC에서 브루트 포스 시도 중이라고 표시되어 있다" loading="lazy"></a>
@@ -296,7 +296,7 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
       <div class="atk">
         <div><span class="score">100점</span><h5>브루트 포스</h5><p>비밀번호를 계속 바꿔 넣는 공격. 5초 안에 5번 실패하면 탐지.</p></div>
         <div><span class="score">70점</span><h5>퇴사자 계정 이용</h5><p>지워지지 않은 퇴사자 계정으로 로그인. 인사 정보의 퇴사자 명단과 대조해 탐지.</p></div>
-        <div><span class="score">80점</span><h5>권한 검사 누락</h5><p>주소창에 권한 밖 메뉴 주소를 직접 입력. 역할 표에 없는 주소를 열면 탐지.</p></div>
+        <div><span class="score">80점</span><h5>권한 없는 메뉴 접근 (권한 검사 누락)</h5><p>주소창에 권한 밖 메뉴 주소를 직접 입력. 역할 표에 없는 주소를 열면 탐지.</p></div>
         <div><span class="score">100점</span><h5>SQL 인젝션</h5><p>아이디 칸에 <span class="mono">pjhun' --</span>를 넣어 비밀번호 검사를 무시. 입력값에서 탐지.</p></div>
       </div>
       </div>
@@ -322,7 +322,7 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
           </div>
           <div><span class="tag ai">AI와 함께</span>
             <ul>
-              <li>초기 보안 콘솔 프로토타입 (Claude로 제작)</li>
+              <li>보안 콘솔 프로토타입 (Claude로 제작)</li>
               <li>제 Python 코드는 Claude에게 구조만 알려 달라고 한 뒤 직접 생각해서 쓰고, Claude에게 검토를 받았습니다.</li>
             </ul>
           </div>
@@ -394,7 +394,7 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
         <div class="limit" style="margin-top:0">
           <b>한계</b>
           <ul class="next" style="margin-top:6px">
-            <li>실제 조치는 IP 차단 하나입니다. 계정 잠금은 연결되지 않았습니다.</li>
+            <li>실제 조치는 IP 차단 하나입니다. 4가지 공격 모두 IP 차단으로 막았고, 계정 잠금 같은 공격별 조치는 시간이 부족해 연결하지 못했습니다.</li>
             <li>승인 화면에 로그인이 없어 승인자를 확인하지 못합니다.</li>
             <li>알림은 기록만 남고 메일·메신저로 보내지 않습니다.</li>
             <li>차단은 오탐 처리 때만 수동으로 풀립니다.</li>
@@ -417,7 +417,7 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
 </section>
 
 <section class="blk wrap">
-  <h2 class="h2">캡스톤 초기 콘솔 프로토타입</h2>
+  <h2 class="h2">캡스톤 보안 콘솔 프로토타입</h2>
   <p class="h2sub">팀 최종 콘솔로 대체되기 전에 Claude와 함께 만든 첫 버전입니다. AI에게 맡기되 사실은 바뀌지 않게 하는 장치를 넣었습니다.</p>
   <div class="two" style="margin-top:22px">
     <article class="card fix">
@@ -486,14 +486,14 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
 
 <section class="blk wrap">
   <h2 class="h2">보안과정 과제</h2>
-  <p class="h2sub">SKT 알레프 보안과정에서 받은 과제를 AI와 함께 수행한 결과입니다.</p>
+  <p class="h2sub">SKT ALEPH 보안과정에서 받은 과제를 AI와 함께 수행한 결과입니다.</p>
   <div class="rows">
     <article class="card row">
       <a class="pic" href="https://choi-bujang-secret-vault-tr33.vercel.app"><img src="../assets/byteback.png" alt="BYTE BACK 방어전 자료실 로그인 화면" loading="lazy"></a>
       <div class="txt">
         <p style="margin-bottom:8px"><span class="tag team">보안과정 과제</span></p>
         <h3>BYTE BACK 방어전: 뚫린 자료실을 단계별로 막기</h3>
-        <p class="one">SKT 알레프 보안과정의 단계별 과제입니다. 자료가 그대로 공개된 "점령된 자료실"을 제공된 시작 틀에서 복사해 받아, 단계마다 방어를 하나씩 붙이고 심판 판정을 받았습니다.</p>
+        <p class="one">SKT ALEPH 보안과정의 단계별 과제입니다. 자료가 그대로 공개된 "점령된 자료실"을 제공된 시작 틀에서 복사해 받아, 단계마다 방어를 하나씩 붙이고 심판 판정을 받았습니다.</p>
         <ul class="chips"><li>JavaScript</li><li>Supabase</li><li>Vercel</li></ul>
         <ul class="pts">
           <li>공개돼 있던 자료를 코드 밖 DB로 옮기고, 로그인한 사람이 자기 자료만 보게 함 (남의 자료는 403)</li>
@@ -516,7 +516,7 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
           <li>서명 검증은 검증된 라이브러리에 맡기고, 1회용 챌린지와 세션과 계정 분리 검사는 따로 구현</li>
           <li>브라우저가 DB에 직접 접근하지 못하게 규칙으로 차단</li>
         </ul>
-        <p class="proof"><b>확인</b> 가상 패스키로 돌리는 자동 시험 51개 (SKT 알레프 과제 8)</p>
+        <p class="proof"><b>확인</b> 가상 패스키로 돌리는 자동 시험 51개 (SKT ALEPH 과제 8)</p>
         <div class="links"><a class="go" href="https://about-me-passkey.vercel.app/">열어 보기</a><a href="https://github.com/zaqxsw108091-create/about-me-passkey">저장소</a></div>
       </div>
     </article>
@@ -569,8 +569,8 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
   <h2 class="h2">이력</h2>
   <div class="card about">
     <dl>
-      <div><dt>학력</dt><dd>학점은행제 공업전문학사 정보처리전공, 평점 3.8/4.5 (졸업예정, 2026.12.15 학위신청 예정)<br>마산제일고등학교 졸업 (2018.02, 자연계열)</dd></div>
-      <div><dt>교육</dt><dd>SKT 알레프 보안과정, 코리아IT아카데미 (2026.08.11~11.12)<br>SBS게임아카데미, C언어부터 Unity 기초 (2023, 약 6개월)</dd></div>
+      <div><dt>학력</dt><dd>학점은행제 공업전문학사 정보처리전공, 평점 3.8/4.5 (2027.02 졸업예정, 2026.12.15 학위신청 예정)<br>마산제일고등학교 졸업 (2018.02, 자연계열)</dd></div>
+      <div><dt>교육</dt><dd>SKT ALEPH 보안과정, 코리아AI아카데미 (2026.08.11~11.12)<br>SBS게임아카데미, C언어부터 Unity 기초 (2024.06~2025.01, 약 7개월)</dd></div>
       <div><dt>자격</dt><dd>네트워크관리사 2급 필기 합격 (2026.11.03), 실기 12.06 응시 예정<br>한국사능력검정 1급 (2016), 운전면허 1종 보통</dd></div>
       <div><dt>경력</dt><dd>케이제이로지텍 물류 (2025.06~2025.08). 적재와 피킹, 앱 기록, 적재 사진 증빙</dd></div>
       <div><dt>근무 조건</dt><dd>야간·교대근무 가능, 합격 시 서울·경기 이사 가능</dd></div>
@@ -588,7 +588,7 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
       <a class="btn fill" href="mailto:zaqxsw108091@gmail.com">zaqxsw108091@gmail.com</a>
       <a class="btn line" href="https://github.com/zaqxsw108091-create">GitHub</a>
     </div>
-    <small>이 사이트도 Claude와 함께 만들었습니다. 내용은 이력서, 캡스톤 자료, 각 저장소의 README와 작업기록에서 확인되는 것만 넣었습니다. (2026.11.14 기준)</small>
+    <small>이 사이트도 Claude와 함께 만들었습니다. 내용은 이력서, 캡스톤 자료, 각 저장소의 README와 작업기록에서 확인되는 것만 넣었습니다. (2026.11.23 기준)</small>
   </div>
 </footer>
 
