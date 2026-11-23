@@ -421,20 +421,16 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
   <p class="h2sub">캡스톤 초반(2026.10.22~23)에 학원 PC의 VMware에 pfSense 방화벽을 직접 설치해 망의 기본 구성을 해 봤습니다. 최종 발표에는 망 구성을 전공한 조원이 만든 망을 썼습니다.</p>
   <article class="card fix" style="margin-top:22px">
     <dl style="grid-template-columns:96px 1fr">
-      <dt>한 것</dt><dd>pfSense CE 2.9.0 설치, 구역별 인터페이스 분리와 IP 설정, 외부 공개 구역(DMZ)에 취약 웹서버 DVWA(192.168.10.10) 구축</dd>
+      <dt>한 것</dt><dd>pfSense CE 2.9.0 설치, 인터페이스 6개(WAN, LAN, OPT1~OPT4)를 나눠 구역별 IP 설정, 외부 공개 구역(DMZ)에 취약 웹서버 DVWA(192.168.10.10) 구축</dd>
       <dt>문제와 해결</dt><dd>호스트 PC와 pfSense의 IP가 겹쳐 접속이 안 되는 문제가 생겨, 호스트 쪽 IP를 192.168.20.5로 바꿔 해결</dd>
       <dt>확인</dt><dd>WAN 쪽 Kali(192.168.100.130)에서 보낸 ping이 기본 규칙(Block private networks from WAN)에 막히는 것을 방화벽 로그로 확인</dd>
-      <dt>하지 못한 것</dt><dd>직접 만든 방화벽 정책 규칙, Kali에서 DVWA로의 공격, Wazuh 연동은 하지 못했습니다.</dd>
+      <dt>하지 못한 것</dt><dd>OPT1과 OPT2에는 패키지 설치용 임시 전체 허용 규칙만 넣었고, 구역별 보안 정책 규칙과 Kali에서 DVWA로의 공격, Wazuh 연동은 하지 못했습니다.</dd>
     </dl>
   </article>
-  <figure style="margin-top:16px">
-    <a href="../assets/pfsense-dashboard.jpg"><img src="../assets/pfsense-dashboard.jpg" alt="pfSense 대시보드 화면. 버전 2.9.0-RELEASE, 사용자 admin@192.168.20.5, 인터페이스 WAN 192.168.100.129, LAN 192.168.20.1, OPT1 192.168.10.1, OPT2 192.168.30.1" loading="lazy"></a>
-    <figcaption>pfSense 대시보드 (2026.10.23). 버전 2.9.0과 인터페이스별 IP가 보입니다. 접속한 PC 주소 192.168.20.5는 IP 충돌을 고친 뒤의 주소입니다.</figcaption>
-  </figure>
   <div class="two" style="margin-top:16px">
     <figure>
-      <a href="../assets/pfsense-console-ip.jpg"><img src="../assets/pfsense-console-ip.jpg" alt="pfSense 콘솔 화면. OPT4 IPv4 주소가 192.168.50.1/24로 설정되었다는 메시지" loading="lazy"></a>
-      <figcaption>pfSense 콘솔에서 인터페이스(OPT4)에 IP 192.168.50.1/24를 설정한 화면입니다.</figcaption>
+      <a href="../assets/pfsense-interfaces-6.png"><img src="../assets/pfsense-interfaces-6.png" alt="pfSense 콘솔 화면. WAN 192.168.100.129, LAN 192.168.20.1, OPT1 192.168.10.1, OPT2 192.168.30.1, OPT3 192.168.40.1, OPT4 192.168.50.1" loading="lazy"></a>
+      <figcaption>pfSense 콘솔 화면. 인터페이스 6개(WAN, LAN, OPT1~OPT4)에 구역별 IP를 설정한 상태입니다.</figcaption>
     </figure>
     <figure>
       <a href="../assets/pfsense-dvwa.jpg"><img src="../assets/pfsense-dvwa.jpg" alt="브라우저로 192.168.10.10의 DVWA에 접속한 화면" loading="lazy"></a>
@@ -618,7 +614,7 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
     <dl>
       <div><dt>학력</dt><dd>학점은행제 공업전문학사 정보처리전공, 평점 3.8/4.5 (2027.02 졸업예정, 2026.12.15 학위신청 예정)<br>마산제일고등학교 졸업 (2018.02, 자연계열)</dd></div>
       <div><dt>교육</dt><dd>SKT ALEPH 보안과정, 코리아AI아카데미 (2026.08.11~11.12)<br>SBS게임아카데미, C언어부터 Unity 기초 (2024.06~2025.01, 약 7개월)</dd></div>
-      <div><dt>자격</dt><dd>네트워크관리사 2급 필기 합격 (2026.11.03), 실기 12.06 응시 예정<br>한국사능력검정 1급 (2016), 운전면허 1종 보통</dd></div>
+      <div><dt>자격</dt><dd>네트워크관리사 2급 필기 합격 (2026.11.03), 실기 12.06 응시 예정<br>한국사능력검정시험 1급 (2016.02), 운전면허 1종 보통</dd></div>
       <div><dt>경력</dt><dd>케이제이로지텍 물류 (2025.06~2025.08). 적재와 피킹, 앱 기록, 적재 사진 증빙</dd></div>
       <div><dt>근무 조건</dt><dd>야간·교대근무 가능, 합격 시 서울·경기 이사 가능</dd></div>
       <div><dt>일하는 태도</dt><dd>정해진 규칙을 지키고, 확인한 것을 기록으로 남깁니다. 팀에서 아무도 고르지 않은 파트를 맡았고, 시간이 부족할 때는 "최소 작업물을 먼저 만들고 남는 시간에 기능을 더하자"고 제안했습니다.</dd></div>
@@ -635,7 +631,7 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
       <a class="btn fill" href="mailto:zaqxsw108091@gmail.com">zaqxsw108091@gmail.com</a>
       <a class="btn line" href="https://github.com/zaqxsw108091-create">GitHub</a>
     </div>
-    <small>이 사이트도 Claude와 함께 만들었습니다. 내용은 이력서, 캡스톤 자료, 각 저장소의 README와 작업기록에서 확인되는 것만 넣었습니다. (2026.11.23 기준)</small>
+    <small>이 사이트도 Claude와 함께 만들었습니다. 내용은 이력서, 캡스톤 자료, 각 저장소의 README와 작업기록에서 확인되는 것만 넣었습니다. (2026.11.24 기준)</small>
   </div>
 </footer>
 
