@@ -314,7 +314,7 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
     </div>
 
     <div class="step">
-      <h4>공격 4가지<span>발표에서 제가 공격자 역할을 맡아 실행했고, 4가지 모두 탐지되고 pfSense에서 IP 차단되는 것을 확인했습니다. 공격마다 다른 조치를 붙일 시간이 부족해, 콘솔에는 4가지 모두 "IP 차단"으로 표시됩니다.</span></h4>
+      <h4>공격 4가지<span>발표에서 제가 공격자 역할을 맡아 실행했고, 4가지 모두 탐지되고 차단되는 것을 확인했습니다. 시간과 난이도 때문에 팀에서 상의해, 콘솔에는 4가지 모두 "IP 차단"으로 표시하도록 정했습니다.</span></h4>
       <div>
       <figure style="margin-bottom:14px">
         <a href="assets/astra-attack-demo.png"><img src="assets/astra-attack-demo.png" alt="발표 시연 화면. VLAN 30의 감염된 PC에서 브루트 포스 시도 중이라고 표시되어 있다" loading="lazy"></a>
@@ -421,7 +421,7 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
         <div class="limit" style="margin-top:0">
           <b>한계</b>
           <ul class="next" style="margin-top:6px">
-            <li>실제 조치는 IP 차단 하나입니다. 4가지 공격 모두 IP 차단으로 막았고, 계정 잠금 같은 공격별 조치는 시간이 부족해 연결하지 못했습니다.</li>
+            <li>콘솔의 조치 표시는 4가지 공격 모두 "IP 차단" 하나로 통일했습니다. 계정 잠금은 연결되지 않았습니다.</li>
             <li>승인 화면에 로그인이 없어 승인자를 확인하지 못합니다.</li>
             <li>알림은 기록만 남고 메일·메신저로 보내지 않습니다.</li>
             <li>차단은 오탐 처리 때만 수동으로 풀립니다.</li>
@@ -441,6 +441,43 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
       </div>
     </div>
   </article>
+</section>
+
+<section class="blk wrap">
+  <h2 class="h2">캡스톤 초반 개인 실습: pfSense 방화벽 직접 구성</h2>
+  <p class="h2sub">캡스톤 초반(2026.10.22~23)에 학원 PC의 VMware에 pfSense 방화벽을 직접 설치해 망의 기본 구성을 해 봤습니다. 최종 발표에는 망 구성을 전공한 조원이 만든 망을 썼습니다.</p>
+  <article class="card fix" style="margin-top:22px">
+    <dl style="grid-template-columns:96px 1fr">
+      <dt>한 것</dt><dd>pfSense CE 2.9.0 설치, 구역별 인터페이스 분리와 IP 설정, 외부 공개 구역(DMZ)에 취약 웹서버 DVWA(192.168.10.10) 구축</dd>
+      <dt>문제와 해결</dt><dd>호스트 PC와 pfSense의 IP가 겹쳐 접속이 안 되는 문제가 생겨, 호스트 쪽 IP를 192.168.20.5로 바꿔 해결</dd>
+      <dt>확인</dt><dd>WAN 쪽 Kali(192.168.100.130)에서 보낸 ping이 기본 규칙(Block private networks from WAN)에 막히는 것을 방화벽 로그로 확인</dd>
+      <dt>하지 못한 것</dt><dd>직접 만든 방화벽 정책 규칙, Kali에서 DVWA로의 공격, Wazuh 연동은 하지 못했습니다.</dd>
+    </dl>
+  </article>
+  <figure style="margin-top:16px">
+    <a href="assets/pfsense-dashboard.jpg"><img src="assets/pfsense-dashboard.jpg" alt="pfSense 대시보드 화면. 버전 2.9.0-RELEASE, 사용자 admin@192.168.20.5, 인터페이스 WAN 192.168.100.129, LAN 192.168.20.1, OPT1 192.168.10.1, OPT2 192.168.30.1" loading="lazy"></a>
+    <figcaption>pfSense 대시보드 (2026.10.23). 버전 2.9.0과 인터페이스별 IP가 보입니다. 접속한 PC 주소 192.168.20.5는 IP 충돌을 고친 뒤의 주소입니다.</figcaption>
+  </figure>
+  <div class="two" style="margin-top:16px">
+    <figure>
+      <a href="assets/pfsense-console-ip.jpg"><img src="assets/pfsense-console-ip.jpg" alt="pfSense 콘솔 화면. OPT4 IPv4 주소가 192.168.50.1/24로 설정되었다는 메시지" loading="lazy"></a>
+      <figcaption>pfSense 콘솔에서 인터페이스(OPT4)에 IP 192.168.50.1/24를 설정한 화면입니다.</figcaption>
+    </figure>
+    <figure>
+      <a href="assets/pfsense-dvwa.jpg"><img src="assets/pfsense-dvwa.jpg" alt="브라우저로 192.168.10.10의 DVWA에 접속한 화면" loading="lazy"></a>
+      <figcaption>DMZ에 올린 취약 웹서버 DVWA(192.168.10.10)에 접속한 화면입니다.</figcaption>
+    </figure>
+  </div>
+  <div class="two" style="margin-top:16px">
+    <figure>
+      <a href="assets/pfsense-kali-ping.jpg"><img src="assets/pfsense-kali-ping.jpg" alt="Kali 터미널. ping -c 4 192.168.100.129 결과 4개 전송, 0개 수신, 100% 손실" loading="lazy"></a>
+      <figcaption>WAN 쪽 Kali에서 pfSense WAN 주소(192.168.100.129)로 ping을 보냈지만 응답이 없습니다.</figcaption>
+    </figure>
+    <figure>
+      <a href="assets/pfsense-firewall-log.jpg"><img src="assets/pfsense-firewall-log.jpg" alt="pfSense 방화벽 로그. 맨 아래 4줄은 10월 23일 08:46:51~54, WAN에서 192.168.100.130이 192.168.100.129로 보낸 ICMP가 Block private networks from WAN 규칙에 막힌 기록" loading="lazy"></a>
+      <figcaption>방화벽 로그. 맨 아래 4줄이 위 ping이 "Block private networks from WAN" 규칙에 막힌 기록입니다 (10.23 08:46).</figcaption>
+    </figure>
+  </div>
 </section>
 
 <section class="blk wrap">
@@ -467,6 +504,16 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
       <p class="proof"><b>확인</b> 자동 시험 59건 통과, 0건 실패. 로그인 5회 실패 시 10분 잠금, 허용 대역 밖 접속 차단, 원본 로그가 시험 전후로 바뀌지 않는 것(해시 비교)을 포함합니다.</p>
       <div class="links"><a href="https://github.com/zaqxsw108091-create/security-console">저장소</a></div>
     </article>
+  </div>
+  <div class="two" style="margin-top:16px">
+    <figure>
+      <a href="assets/prototype-dashboard.jpg"><img src="assets/prototype-dashboard.jpg" alt="보안 콘솔 프로토타입 대시보드 화면. 시험 모드(DRY_RUN) 안내, 상태 분포, 심각도 분포, 대응 등급 분포가 보인다" loading="lazy"></a>
+      <figcaption>보안 콘솔 프로토타입 대시보드 (2026.10.29, 내 PC에서 실행). 임시 데이터로 필수 기능이 돌아가는지 확인한 화면입니다. 시험 모드(DRY_RUN)라 승인해도 실제 차단은 하지 않고 기록만 남깁니다.</figcaption>
+    </figure>
+    <figure>
+      <a href="assets/prototype-incidents.jpg"><img src="assets/prototype-incidents.jpg" alt="보안 콘솔 프로토타입 사건 목록 화면. 사건마다 점수, 등급, 대응 등급(즉시 자동조치, 승인 후 조치, 모니터링만)이 표시된다" loading="lazy"></a>
+      <figcaption>사건 목록. 위험 점수에 따라 즉시 자동조치, 승인 후 조치, 모니터링으로 나뉜 결과입니다. 대응 등급 분류는 제 파트(classifier.py)입니다.</figcaption>
+    </figure>
   </div>
 </section>
 
