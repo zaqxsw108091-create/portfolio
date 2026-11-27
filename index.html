@@ -365,7 +365,7 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
           <li><span class="mono">ticket.py</span><span>사건마다 티켓을 만들고 상태(승인대기, 조치중, 완료, 거절, 오탐, 실패, 모니터링)를 관리합니다.</span></li>
           <li><span class="mono">playbook.py</span><span>등급과 사건 유형에 따라 "무엇을 할지" 대응 요청서를 만듭니다.</span></li>
           <li><span class="mono">false_positive.py</span><span>관리자가 오탐이라고 판단하면 차단 해제 요청을 만들고 오탐 기록을 남깁니다.</span></li>
-          <li><span class="mono">classifier.py</span><span>팀이 정한 기준(70점 이상 즉시 자동조치, 50~69점 승인 후 조치, 50점 미만 모니터링)을 적용합니다. VIP 계정·IP는 70점 이상이어도 승인 후 조치로 처리합니다.</span></li>
+          <li><span class="mono">classifier.py</span><span>팀이 정한 기준(70점 이상 즉시 자동조치, 50~69점 승인 후 조치, 50점 미만 모니터링, VIP 계정·IP는 70점 이상도 승인 후 조치)을 적용합니다.</span></li>
           <li><span class="mono">main.py</span><span>위 파일들을 순서대로 실행합니다.</span></li>
         </ul>
       </div>
@@ -478,7 +478,7 @@ footer small{display:block;margin-top:22px;color:#93A0B3;font-size:13.5px}
 
 <section class="blk wrap">
   <h2 class="h2">캡스톤 보안 콘솔 프로토타입</h2>
-  <p class="h2sub">팀 최종 콘솔로 대체되기 전에 Claude와 함께 만든 이전 버전입니다. AI에게 맡기되 사실은 바뀌지 않게 하는 장치를 넣었습니다.</p>
+  <p class="h2sub">팀 최종 콘솔로 대체되기 전에 Claude와 함께 만든 시험 버전입니다. AI에게 맡기되 사실은 바뀌지 않게 하는 장치를 넣었습니다.</p>
   <div class="two" style="margin-top:22px">
     <article class="card fix">
       <h3>AI 보고서: 문장만 맡기고 사실은 코드가 지킨다</h3>
